@@ -3,10 +3,13 @@ package com.izamim.typeBot.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Protocol implements Serializable{
@@ -18,15 +21,19 @@ public class Protocol implements Serializable{
 	private String name;
 	private String description;
 	
+	@ManyToOne
+	private Category category;
+	
 	public Protocol () {
 		
 	}
-
-	public Protocol(Long id, String name, String description) {
+	
+	public Protocol(Long id, String name, String description, Category category) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
+		this.category = category;
 	}
 
 	public Long getId() {
@@ -61,6 +68,16 @@ public class Protocol implements Serializable{
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+	
+	@JsonIgnore
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
 
 	@Override
 	public boolean equals(Object obj) {

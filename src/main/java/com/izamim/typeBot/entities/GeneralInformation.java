@@ -3,10 +3,13 @@ package com.izamim.typeBot.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class GeneralInformation implements Serializable{
@@ -18,14 +21,18 @@ public class GeneralInformation implements Serializable{
 	private String title;
 	private String description;
 	
+	@ManyToOne
+	private Category category;
+	
 	public GeneralInformation() {
 	}
 
-	public GeneralInformation(Long id, String title, String description) {
+	public GeneralInformation(Long id, String title, String description, Category category) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
+		this.category = category;
 	}
 
 	public Long getId() {
@@ -54,6 +61,15 @@ public class GeneralInformation implements Serializable{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	@JsonIgnore
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	@Override

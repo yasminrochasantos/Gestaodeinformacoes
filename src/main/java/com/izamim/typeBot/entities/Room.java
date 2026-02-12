@@ -3,8 +3,6 @@ package com.izamim.typeBot.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -96,7 +94,6 @@ public class Room implements Serializable{
 		return Objects.equals(id, other.id);
 	}
 
-	@JsonIgnore
 	public Hotel getHotel() {
 		return hotel;
 	}

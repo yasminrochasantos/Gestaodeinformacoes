@@ -24,6 +24,12 @@ public class Category implements Serializable{
 	@OneToMany(mappedBy = "category")
 	private Set<Hotel> hotel = new HashSet<>();
 	
+	@OneToMany(mappedBy = "category")
+	private Set<Protocol> protocol = new HashSet<>();
+	
+	@OneToMany(mappedBy = "category")
+	private Set<GeneralInformation> general = new HashSet<>();
+	
 	public Category() {
 	}
 
@@ -61,6 +67,11 @@ public class Category implements Serializable{
 	public Set<Hotel> getHotel() {
 		return hotel;
 	}
+	
+	public Set<Protocol> geProtocol() {
+		return protocol;
+	}
+	
 	
 	@Override
 	public int hashCode() {

@@ -95,6 +95,7 @@ public class Hotel implements Serializable{
 		this.category = category;
 	}
 
+	@JsonIgnore
 	public Set<Room> getRoom() {
 		return room;
 	}
